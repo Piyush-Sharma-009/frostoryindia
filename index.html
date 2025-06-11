@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frostory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* body {
+        font-family: "Montserrat", sans-serif;
+      } */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #fffdf7;
+        margin: 0;
+        /* padding: 40px 20px; */
+      }
+
+      h2 {
+        text-align: center;
+        font-size: 3.5rem;
+        color: #0057a3;
+        margin-bottom: 30px;
+      }
+
+      .carousel-wrapper {
+        max-width: 1020px;
+        margin: auto;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .carousel {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        will-change: transform;
+      }
+
+      .card {
+        width: 300px;
+        margin: 0 10px;
+        background-color: white;
+        border: 3px solid;
+        border-radius: 20px;
+        padding: 24px;
+        position: relative;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        flex-shrink: 0;
+        height: 260px;
+      }
+
+      .card.yellow {
+        border-color: #ffd700;
+      }
+      .card.purple {
+        border-color: #c084fc;
+      }
+      .card.red {
+        border-color: #fb923c;
+      }
+
+      .quote-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+        background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Quote_sign.svg/1024px-Quote_sign.svg.png")
+          no-repeat center;
+        background-size: 30px 30px;
+        width: 40px;
+        height: 40px;
+      }
+
+      .stars {
+        color: #065f46;
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+      }
+
+      .review-text {
+        font-size: 1rem;
+        color: #222;
+        margin-bottom: 20px;
+      }
+
+      .author {
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+      .role {
+        font-size: 0.9rem;
+        color: #555;
+      }
+
+      @media (max-width: 1000px) {
+        .card {
+          width: 90%;
+          height: auto;
+          margin: 0 auto 20px;
+        }
+        .duplicate {
+          display: none !important;
+        }
+        .carousel {
+          flex-wrap: wrap;
+          justify-content: center;
+          transition: none;
+          transform: none !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-white text-gray-800">
+<header class="bg-white shadow sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-4">
+      
+      <!-- Logo + Brand -->
+      <div class="flex items-center space-x-3">
+        <img src="logo.jpg" alt="Frostory Logo" class="h-10 w-auto object-contain" />
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-8 text-gray-700 font-semibold">
+        <a href="#home" class="hover:text-orange-600 transition-colors duration-300">Home</a>
+        <a href="#introduction" class="hover:text-orange-600 transition-colors duration-300">About Us</a>
+        <a href="#contact" class="hover:text-orange-600 transition-colors duration-300">Contact</a>
+        <a href="#feedback" class="hover:text-orange-600 transition-colors duration-300">Feedback</a>
+
+      </nav>
+
+      <!-- Shop Now Button -->
+      <div class="hidden md:block">
+        <a href="borchure.pdf" 
+           class="inline-block px-6 py-2 bg-orange-600 text-white font-semibold rounded-lg shadow-md hover:bg-orange-700 transition-colors duration-300">
+          Our Brochure
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-btn" aria-label="Open Menu" class="focus:outline-none">
+          <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-2 space-y-2 text-center text-gray-700 font-medium">
+      <a href="#home" class="block py-2 hover:text-orange-600">Home</a>
+      <a href="#about" class="block py-2 hover:text-orange-600">About Us</a>
+      <a href="#contact" class="block py-2 hover:text-orange-600">Contact</a>
+      <a href="#feedback" class="block py-2 hover:text-orange-600">Feedback</a>
+      <a href="#shop" class="inline-block mt-2 px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 transition">Shop Now</a>
+    </div>
+  </div>
+</header>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-orange-100 py-20 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h1 class="text-4xl font-bold mb-4">Delicious. Healthy. Homely.</h1>
+        <p class="text-lg text-gray-700 mb-6">
+          Authentic Indian Meals Delivered Fresh
+        </p>
+        <a
+          href="#products"
+          class="bg-orange-500 text-white px-6 py-3 rounded-full font-medium hover:bg-orange-600"
+          >Explore Products</a
+        >
+      </div>
+    </section>
+
+    <!-- INTRODUCTION Section -->
+    <section id="introduction" class="bg-orange-50 py-16 px-4">
+      <div
+        class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-10"
+      >
+        <div class="md:w-1/2">
+          <img
+            src="for.png"
+            alt="Delicious frozen meals"
+            class="w-full rounded-3xl shadow-2xl object-cover max-h-96 mx-auto"
+          />
+        </div>
+        <div class="md:w-1/2 text-center md:text-left">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+            Welcome to Frostory
+          </h2>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            At <strong>Frostory</strong>, we believe great food should be
+            delicious, convenient, and always within reach. We specialize in
+            high-quality frozen meals and snacks that bring comfort, flavor, and
+            variety to your table—without the hassle of cooking from scratch.
+          </p>
+          <p class="text-lg text-gray-700 leading-relaxed mt-6">
+            Our recipes are crafted with care using premium ingredients,
+            preserving freshness and taste through advanced freezing techniques.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Range Slider -->
+    <section id="products" class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Our Product Range</h2>
+        <div class="overflow-x-auto whitespace-nowrap space-x-4 flex pb-4">
+
+          <!-- VEG CLASSIC MOMOS PRODUCT CARD -->
+          <div
+            class="w-72 bg-orange-100 p-5 rounded-2xl shadow-lg text-center border border-gray-200 hover:shadow-xl transition-all duration-300"
+          >
+            <!-- Product Image (Main) -->
+            <div
+              class="w-[180px] h-[180px] mx-auto bg-gray-200 rounded-xl overflow-hidden cursor-pointer shadow-sm hover:scale-105 transition-transform"
+              onclick="document.getElementById('imageModal1').classList.remove('hidden')"
+            >
+              <img
+                src="momos.jpg"
+                alt="veg_Momos"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <!-- Product Info -->
+            <h2 class="text-lg font-semibold text-gray-800 mt-4">Veg Classic Momos</h2>
+          </div>
+
+          <!-- Modal for Multiple Images -->
+          <div
+            id="imageModal1"
+            class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
+          >
+            <div
+              class="bg-white p-6 rounded-xl shadow-xl max-w-4xl w-full relative"
+            >
+              <!-- Close Button -->
+              <button
+                onclick="document.getElementById('imageModal1').classList.add('hidden')"
+                class="absolute top-3 right-4 text-gray-400 hover:text-black text-2xl"
+              >
+                &times;
+              </button>
+              <h3 class="text-lg font-semibold text-gray-800 mb-6 text-center">
+                Frozen Foods...
+              </h3>
+              <div
+                class="grid grid-cols-2 md:grid-cols-3 gap-6 justify-items-center"
+              >
+                <!-- Multiple Image Thumbnails (200x200) -->
+                <img
+                  src="veg_m_2.jpg"
+                  alt="veg_Momos"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+                <img
+                  src="veg_m_3.jpg"
+                  alt="veg_Momos"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+                <img
+                  src="veg_m_4.jpg"
+                  alt="veg_Momos"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+              </div>
+            </div>
+          </div>
+
+
+          <!-- PANEER MOMOS PRODUCT CARD -->
+          <div
+            class="w-72 bg-orange-100 p-5 rounded-2xl shadow-lg text-center border border-gray-200 hover:shadow-xl transition-all duration-300"
+          >
+            <!-- Product Image (Main) -->
+            <div
+              class="w-[180px] h-[180px] mx-auto bg-gray-200 rounded-xl overflow-hidden cursor-pointer shadow-sm hover:scale-105 transition-transform"
+              onclick="document.getElementById('imageModal2').classList.remove('hidden')"
+            >
+              <img
+                src="paneer_momos.jpg"
+                alt="Panner Momos"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <!-- Product Info -->
+            <h2 class="text-lg font-semibold text-gray-800 mt-4">Paneer Momos</h2>
+          </div>
+
+          <!-- Modal for Multiple Images -->
+          <div
+            id="imageModal2"
+            class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
+          >
+            <div
+              class="bg-white p-6 rounded-xl shadow-xl max-w-4xl w-full relative"
+            >
+              <!-- Close Button -->
+              <button
+                onclick="document.getElementById('imageModal2').classList.add('hidden')"
+                class="absolute top-3 right-4 text-gray-400 hover:text-black text-2xl"
+              >
+                &times;
+              </button>
+              <h3 class="text-lg font-semibold text-gray-800 mb-6 text-center">
+                Frozen Products......
+              </h3>
+              <div
+                class="grid grid-cols-2 md:grid-cols-3 gap-6 justify-items-center"
+              >
+                <!-- Multiple Image Thumbnails (200x200) -->
+                <img
+                  src="paneer_m_2.jpg"
+                  alt="Panner Momos"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+                <img
+                  src="paneer_m_3.jpg"
+                  alt="Panner Momos"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+
+              </div>
+            </div>
+          </div>
+
+          <!-- CORN & CHEESE MOMOS PRODUCT CARD -->
+          <div
+            class="w-72 bg-orange-100 p-5 rounded-2xl shadow-lg text-center border border-gray-200 hover:shadow-xl transition-all duration-300"
+          >
+            <!-- Product Image (Main) -->
+            <div
+              class="w-[180px] h-[180px] mx-auto bg-gray-200 rounded-xl overflow-hidden cursor-pointer shadow-sm hover:scale-105 transition-transform"
+              onclick="document.getElementById('imageModal3').classList.remove('hidden')"
+            >
+              <img
+                src="corn_n_cheese_momos.jpg"
+                alt="Panner Momos"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <!-- Product Info -->
+            <h2 class="text-lg font-semibold text-gray-800 mt-4">CORN & CHEESE MOMOS</h2>
+          </div>
+
+          <!-- Modal for Multiple Images -->
+          <div
+            id="imageModal3"
+            class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
+          >
+            <div
+              class="bg-white p-6 rounded-xl shadow-xl max-w-4xl w-full relative"
+            >
+              <!-- Close Button -->
+              <button
+                onclick="document.getElementById('imageModal3').classList.add('hidden')"
+                class="absolute top-3 right-4 text-gray-400 hover:text-black text-2xl"
+              >
+                &times;
+              </button>
+              <h3 class="text-lg font-semibold text-gray-800 mb-6 text-center">
+                Frozen Products...
+              </h3>
+              <div
+                class="grid grid-cols-2 md:grid-cols-3 gap-6 justify-items-center"
+              >
+                <!-- Multiple Image Thumbnails (200x200) -->
+                <img
+                  src="C&C_momos_2.jpg"
+                  alt="cream and cheese momos"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+                <img
+                  src="C&C_momos_3.jpg"
+                  alt="cream and cheese momos"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+                <img
+                  src="C&C_momos_4.jpg"
+                  alt="cream and cheese momos"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- PUNJABI SAMOSA PRODUCT CARD -->
+          <div
+            class="w-72 bg-orange-100 p-5 rounded-2xl shadow-lg text-center border border-gray-200 hover:shadow-xl transition-all duration-300"
+          >
+            <!-- Product Image (Main) -->
+            <div
+              class="w-[180px] h-[180px] mx-auto bg-gray-200 rounded-xl overflow-hidden cursor-pointer shadow-sm hover:scale-105 transition-transform"
+              onclick="document.getElementById('imageModal4').classList.remove('hidden')"
+            >
+              <img
+                src="punjabi_samosa.jpg"
+                alt="samosa"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <!-- Product Info -->
+            <h2 class="text-lg font-semibold text-gray-800 mt-4">PUNJABI SAMOSA</h2>
+          </div>
+
+          <!-- Modal for Multiple Images -->
+          <div
+            id="imageModal4"
+            class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
+          >
+            <div
+              class="bg-white p-6 rounded-xl shadow-xl max-w-4xl w-full relative"
+            >
+              <!-- Close Button -->
+              <button
+                onclick="document.getElementById('imageModal4').classList.add('hidden')"
+                class="absolute top-3 right-4 text-gray-400 hover:text-black text-2xl"
+              >
+                &times;
+              </button>
+              <h3 class="text-lg font-semibold text-gray-800 mb-6 text-center">
+                Frozen Products......
+              </h3>
+              <div
+                class="grid grid-cols-2 md:grid-cols-3 gap-6 justify-items-center"
+              >
+                <!-- Multiple Image Thumbnails (200x200) -->
+                <img
+                  src="samosa_2.jpg"
+                  alt="samosa"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+                <img
+                  src="samosa_3.jpg"
+                  alt="samosa"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+                <img
+                  src="samosa_4.jpg"
+                  alt="samosa"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- CHEESE BALL PRODUCT CARD -->
+          <div
+            class="w-72 bg-orange-100 p-5 rounded-2xl shadow-lg text-center border border-gray-200 hover:shadow-xl transition-all duration-300"
+          >
+            <!-- Product Image (Main) -->
+            <div
+              class="w-[180px] h-[180px] mx-auto bg-gray-200 rounded-xl overflow-hidden cursor-pointer shadow-sm hover:scale-105 transition-transform"
+              onclick="document.getElementById('imageModal5').classList.remove('hidden')"
+            >
+              <img
+                src="cheese_balls.jpg"
+                alt="cheese ball"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <!-- Product Info -->
+            <h2 class="text-lg font-semibold text-gray-800 mt-4">CHEESE BALL</h2>
+          </div>
+
+          <!-- Modal for Multiple Images -->
+          <div
+            id="imageModal5"
+            class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
+          >
+            <div
+              class="bg-white p-6 rounded-xl shadow-xl max-w-4xl w-full relative"
+            >
+              <!-- Close Button -->
+              <button
+                onclick="document.getElementById('imageModal5').classList.add('hidden')"
+                class="absolute top-3 right-4 text-gray-400 hover:text-black text-2xl"
+              >
+                &times;
+              </button>
+              <h3 class="text-lg font-semibold text-gray-800 mb-6 text-center">
+                Frozen Products......
+              </h3>
+              <div
+                class="grid grid-cols-2 md:grid-cols-3 gap-6 justify-items-center"
+              >
+                <!-- Multiple Image Thumbnails (200x200) -->
+                <img
+                  src="CHEESE_BALL_2.jpg"
+                  alt="cheese ball"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+                <img
+                  src="CHEESE_BALL_3.jpg"
+                  alt="cheese ball"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+                <img
+                  src="CHEESE_BALL_4.jpg"
+                  alt="cheese ball"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- SPRING ROLL PRODUCT CARD -->
+          <div
+            class="w-72 bg-orange-100 p-5 rounded-2xl shadow-lg text-center border border-gray-200 hover:shadow-xl transition-all duration-300"
+          >
+            <!-- Product Image (Main) -->
+            <div
+              class="w-[180px] h-[180px] mx-auto bg-gray-200 rounded-xl overflow-hidden cursor-pointer shadow-sm hover:scale-105 transition-transform"
+              onclick="document.getElementById('imageModal6').classList.remove('hidden')"
+            >
+              <img
+                src="spring_rolls.jpg"
+                alt="spring roll"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <!-- Product Info -->
+            <h2 class="text-lg font-semibold text-gray-800 mt-4">SPRING ROLL</h2>
+          </div>
+
+          <!-- Modal for Multiple Images -->
+          <div
+            id="imageModal6"
+            class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
+          >
+            <div
+              class="bg-white p-6 rounded-xl shadow-xl max-w-4xl w-full relative"
+            >
+              <!-- Close Button -->
+              <button
+                onclick="document.getElementById('imageModal6').classList.add('hidden')"
+                class="absolute top-3 right-4 text-gray-400 hover:text-black text-2xl"
+              >
+                &times;
+              </button>
+              <h3 class="text-lg font-semibold text-gray-800 mb-6 text-center">
+                Frozen Products......
+              </h3>
+              <div
+                class="grid grid-cols-2 md:grid-cols-3 gap-6 justify-items-center"
+              >
+                <!-- Multiple Image Thumbnails (200x200) -->
+                <img
+                  src="roll2.jpg"
+                  alt="spring roll"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+                <img
+                  src="roll3.jpg"
+                  alt="spring roll"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+                <img
+                  src="roll4.jpg"
+                  alt="spring roll"
+                  class="w-[200px] h-[200px] object-cover rounded-lg border border-gray-300"
+                />
+              </div>
+            </div>
+          </div>
+
+
+    </section>
+
+    <!-- MOTO SECTION -->
+
+    <section class="bg-gradient-to-br from-white to-orange-50 py-16 px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-4xl sm:text-5xl font-bold text-gray-800 mb-4 tracking-tight">
+      <span class="text-orange-600">Swad Bhi, Suraksha Bhi</span><br />
+      <span class="text-teal-500 text-2xl sm:text-3xl font-medium">– The Frostory Promise</span>
+    </h2>
+    <p class="text-lg sm:text-xl text-gray-600 italic mt-3">
+      A trusted blend of homely Indian flavors & world-class hygiene standards — frozen with care, served with love.
+    </p>
+
+    <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8">
+      <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300">
+        <img src="https://img.icons8.com/fluency/48/soap-dispenser.png" alt="Hygiene Icon" class="mx-auto mb-4" />
+        <h3 class="text-xl font-semibold text-gray-700">Hygiene First</h3>
+        <p class="text-gray-500 mt-2 text-sm">Prepared & packed in sanitized environments to ensure complete safety.</p>
+      </div>
+      <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300">
+        <img src="https://img.icons8.com/fluency/48/samosa.png" alt="Taste Icon" class="mx-auto mb-4" />
+        <h3 class="text-xl font-semibold text-gray-700">Authentic Taste</h3>
+        <p class="text-gray-500 mt-2 text-sm">Real Indian flavors in every bite — just like your favorite street food spot.</p>
+      </div>
+      <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300">
+        <img src="https://img.icons8.com/fluency/48/shield.png" alt="Trust Icon" class="mx-auto mb-4" />
+        <h3 class="text-xl font-semibold text-gray-700">Trusted by Families</h3>
+        <p class="text-gray-500 mt-2 text-sm">Built on love, trust, and consistent quality you can rely on every time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- feedback section -->
+
+
+    <h2 id="feedback" style="font-size: 2.5rem; font-weight: bold;">What our customers say</h2>
+    <br/>
+    <div class="carousel-wrapper">
+      <div class="carousel" id="carousel">
+        <div class="card yellow">
+          <div class="quote-icon"></div>
+          <div class="stars">★★★★★</div>
+          <div class="review-text">
+            “Frostory’s spring rolls are simply amazing! They taste just like something you'd get at a good restaurant, but with the ease of making them at home in minutes.”
+          </div>
+          <div class="author">Priyanka </div>
+        </div>
+
+        <div class="card purple">
+          <div class="quote-icon"></div>
+          <div class="stars">★★★★★</div>
+          <div class="review-text">
+            "Frostory’s paneer momos are a total hit at my home! Just steam and serve—super soft, perfectly spiced, and you'd never guess they came from the freezer.."
+          </div>
+          <div class="author">Krishn</div>
+        </div>
+
+        <div class="card red">
+          <div class="quote-icon"></div>
+          <div class="stars">★★★★★</div>
+          <div class="review-text">
+            "Whenever guests come over, I just pop Frostory’s Punjabi samosas in the air fryer. Crispy, masaledar, and no one even knows they’re frozen!"
+          </div>
+          <div class="author">Saksham</div>
+        </div>
+
+        <!-- Duplicated Cards for infinite loop -->
+        <div class="card yellow duplicate">
+          <div class="quote-icon"></div>
+          <div class="stars">★★★★★</div>
+          <div class="review-text">
+           “Frostory’s spring rolls are simply amazing! They taste just like something you'd get at a good restaurant, but with the ease of making them at home in minutes.”
+          </div>
+          <div class="author">Priyanka </div>
+        </div>
+
+
+        <div class="card purple duplicate">
+          <div class="quote-icon"></div>
+          <div class="stars">★★★★★</div>
+          <div class="review-text">
+           "Frostory’s paneer momos are a total hit at my home! Just steam and serve—super soft, perfectly spiced, and you'd never guess they came from the freezer.."
+          </div>
+          <div class="author">Krishn</div>
+        </div>
+      </div>
+    </div>
+
+
+   <!-- our purpose section -->
+
+   <section id="purpose" class="py-20 bg-gradient-to-br from-white to-orange-50">
+  <div class="max-w-4xl mx-auto px-6 text-center bg-white rounded-3xl shadow-lg p-10">
+    <h2 class="text-4xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-green-700 to-teal-500 font-sans">
+      Our Purpose
+    </h2>
+    <p class="text-gray-800 leading-relaxed text-xl font-inter tracking-wide">
+      Our mission is to deliver <span class="font-semibold text-green-700">premium frozen food solutions</span> that combine exceptional taste, nutrition, and convenience.
+    </p>
+    <p class="text-gray-700 leading-relaxed text-lg mt-6 font-inter">
+      We envision <span class="font-semibold text-teal-500">Frostory</span> as a leading force in the frozen food space, empowering households and the <em>HoReCa</em> industry with ready-to-serve meals.
+    </p>
+  </div>
+</section>
+
+
+
+      <!-- contact us -->
+
+      <section id="contact" style="background: linear-gradient(135deg, rgb(255 247 237), rgb(255 237 213)); padding: 60px 20px; font-family: 'Poppins', sans-serif;">
+  <div style="max-width: 900px; margin: 0 auto; text-align: center; color: #333;">
+    <h2 style="font-size: 2.8rem; font-weight: 700; margin-bottom: 10px;">Get in Touch with Frostory</h2>
+    <p style="font-size: 1.15rem; margin-bottom: 40px; color: #666;">
+      We're here to help you with your frozen food cravings. Reach out to us anytime!
+    </p>
+    
+    <div style="display: flex; justify-content: center;">
+      <div style="background: white; border-radius: 12px; padding: 40px 50px; box-shadow: 0 6px 15px rgb(249 115 22 / 0.15); text-align: left; max-width: 450px; width: 100%;">
+        <h3 style="color: rgb(249 115 22); font-weight: 700; margin-bottom: 25px;">Contact Details</h3>
+        <p style="margin: 16px 0; font-weight: 600;">🌐 Website:</p>
+        <a href="https://www.frostoryindia.com" target="_blank" style="color: rgb(249 115 22); text-decoration: none; font-size: 1.1rem;">www.frostoryindia.com</a>
+
+        <p style="margin: 24px 0 16px; font-weight: 600;">📍 Address:</p>
+        <p>D14, opp. Genius Public School,<br>Preet Vihar Colony, Rudrapur</p>
+
+        <p style="margin: 24px 0 16px; font-weight: 600;">📞 Phone:</p>
+        <a href="tel:+919837451704" style="color: rgb(249 115 22); text-decoration: none; font-size: 1.1rem;">+91 98374 51704</a>
+
+        <p style="margin: 24px 0 16px; font-weight: 600;">✉️ Email:</p>
+        <a href="mailto:frostoryofficial@gmail.com" style="color: rgb(249 115 22); text-decoration: none; font-size: 1.1rem;">frostoryofficial@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ 
+ 
+
+    <!-- Footer -->
+    <footer class="bg-white border-t py-6 text-center text-sm">
+      <p>&copy; 2025 Frostory. All rights reserved.</p>
+    </footer>
+
+    <script>
+      const carousel = document.getElementById("carousel");
+      const cards = carousel.querySelectorAll(".card");
+      const cardWidth = cards[0].offsetWidth + 20; // width + margin
+      let currentSlide = 0;
+
+      function slide() {
+        currentSlide++;
+
+        // Reset carousel for infinite loop
+        if (currentSlide >= cards.length - 2) {
+          carousel.style.transition = "none";
+          carousel.style.transform = `translateX(0px)`;
+          currentSlide = 1;
+          setTimeout(() => {
+            carousel.style.transition = "transform 0.5s ease-in-out";
+            carousel.style.transform = `translateX(-${
+              cardWidth * currentSlide
+            }px)`;
+          }, 50);
+        } else {
+          carousel.style.transform = `translateX(-${
+            cardWidth * currentSlide
+          }px)`;
+        }
+      }
+
+      setInterval(slide, 2000);
+    </script>
+  </body>
+</html>

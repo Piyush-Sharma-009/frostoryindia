@@ -1,0 +1,26 @@
+{
+  "name": "frostory-inquiry-form",
+  "version": "1.0.0",
+  "description": "Backend for Frostory's inquiry form using Node.js, Express, and Nodemailer",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["inquiry", "nodemailer", "express", "backend", "email", "frostory"],
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "nodemailer": "^7.0.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/frostory-inquiry-form"
+  },
+  "homepage": "https://frostoryindia.com"
+}
